@@ -12,6 +12,7 @@ public class Competitor {
 	private String lastName;
 	private String birthYear;	// birth year is not given out to avoid any legal issues and save space for mobile view of results table
 	private String club;
+	private Subtotals[] subtotals;
 	private Series[] series;
 	private String totalResult;
 	private String innerTens;
@@ -58,9 +59,17 @@ public class Competitor {
 		this.club = club;
 	}
 	
+	public Subtotals[] getSubtotals() {
+		return subtotals;
+	}
+	public void setSubtotals(Subtotals[] subtotals) {
+		this.subtotals = subtotals;
+	}
+
 	public Series[] getSeries() {
 		return series;
 	}
+
 	public void setSeries(Series[] series) {
 		this.series = series;
 	}

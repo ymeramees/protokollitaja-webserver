@@ -25,11 +25,11 @@ public class MongoUserDetailsService implements UserDetailsService {
 		Users user = repository.findByUsername(username);
 		
 		if(user == null) {
-			throw new UsernameNotFoundException("User not found!");
+			throw new UsernameNotFoundException("User " + username + " not found!");
 		}
 		
 		List<SimpleGrantedAuthority> authorities = Arrays.asList(new SimpleGrantedAuthority("user"));
-		
+
 		return new User(user.getUsername(), user.getPassword(), authorities);
 	}
 
