@@ -16,21 +16,21 @@ import ee.zone.web.protokollitajawebserver.repository.UsersRepository;
 
 @Component
 public class MongoUserDetailsService implements UserDetailsService {
-	
-	@Autowired
-	private UsersRepository repository;
 
-	@Override
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		Users user = repository.findByUsername(username);
-		
-		if(user == null) {
-			throw new UsernameNotFoundException("User " + username + " not found!");
-		}
-		
-		List<SimpleGrantedAuthority> authorities = Arrays.asList(new SimpleGrantedAuthority("user"));
+    @Autowired
+    private UsersRepository repository;
 
-		return new User(user.getUsername(), user.getPassword(), authorities);
-	}
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        Users user = repository.findByUsername(username);
+
+        if (user == null) {
+            throw new UsernameNotFoundException("User " + username + " not found!");
+        }
+
+        List<SimpleGrantedAuthority> authorities = Arrays.asList(new SimpleGrantedAuthority("USER"));
+
+        return new User(user.getUsername(), user.getPassword(), authorities);
+    }
 
 }
