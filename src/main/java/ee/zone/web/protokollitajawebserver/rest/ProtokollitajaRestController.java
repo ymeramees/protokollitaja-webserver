@@ -8,6 +8,7 @@ import java.util.Optional;
 
 import javax.servlet.http.HttpServletResponse;
 
+import ee.zone.web.protokollitajawebserver.tools.DatabaseConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -37,6 +38,15 @@ public class ProtokollitajaRestController {
     private CompetitionRepository repository;
     private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy.MM.dd - hh:mm:ss");
     private int numberOfCompetitorRequests = 0;
+
+    // Convert database to new format, used only in special cases
+//    @PreAuthorize("hasRole('USER')")
+//    @GetMapping("/convert")
+//    public String convertCompetitions() {
+//        DatabaseConverter.convert(repository, simpleDateFormat);
+//
+//        return "Done";
+//    }
 
     // Get list of available competitions (only IDs, names, times and places)
     @PreAuthorize("hasRole('USER')")
